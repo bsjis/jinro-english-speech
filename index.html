@@ -174,7 +174,7 @@ input[type=text]{width:100%}
   <div id="loadingDiv" class="card hidden">
     <div class="loading">
       <div class="spinner"></div>
-      <p style="font-size:13px;color:#64748B;text-align:center;line-height:1.7">Gemini AI 코치가 강세, 인토네이션, 끊어 읽기를 분석 중입니다...<br>선생님 구글 시트에 저장하는 중이에요 ✨</p>
+      <p style="font-size:13px;color:#64748B;text-align:center;line-height:1.7">Gemini AI 코치가 강세, 인토네이션, 문맥 끊어 읽기를 분석 중입니다...<br>선생님 구글 시트에 저장하는 중이에요 ✨</p>
     </div>
   </div>
 
@@ -237,8 +237,8 @@ input[type=text]{width:100%}
 </div>
 
 <script>
-// 🔗 새로 발급받으신 Apps Script 웹 앱 URL 적용
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwMQNmp9ADgB0HxuipJhed7aqdSs0YyeXbalWyo_PqJ07RKjM1Mnh5Cl1NW1Ec16EiQMw/exec";
+// 🔗 새로 지정해주신 Apps Script 웹 앱 URL
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyTcCEE7QQIqw1z2PqQXlQty3ENchbd_A5o1nePIOUM7VyvnbMuM8yFVBjZyWn-joLN/exec";
 
 const SOUND_RULES=[
   {sound:'/θ/ /ð/',regex:/\b(the|this|that|these|those|there|their|they|think|thought|thank|three|through|throw|thin|thick|thing|things|both|with|math|mouth|teeth|truth|youth|breath)\b/gi,
@@ -285,6 +285,7 @@ const CONTENT_WORDS=new Set([
 const SUBORDINATORS=new Set(['because','although','though','while','since','when','if','unless','whereas','after','before','until']);
 const COORDINATORS=new Set(['and','but','or','so','yet','for','nor']);
 
+// 🎯 문맥 기반 모델링 스크립트 생성 로직
 function generateModeling(script) {
   if (!script || !script.trim()) return '';
 
@@ -305,11 +306,19 @@ function generateModeling(script) {
       const isPunct = /^[.,!?;:]$/.test(tok);
 
       if (isPunct) {
+        // 문맥 예외 처리: "hello, everyone"처럼 단독 호칭 문맥은 반점이 있어도 쉼(pause) 제거
         if (tok === ',') {
-          lineTokens.push({ text: tok, type: 'punct' });
-          lineTokens.push({ text: '↗', type: 'up' });
-          lineTokens.push({ text: '‖', type: 'pause' });
-          wordCount = 0;
+          const prevTok = i > 0 ? tokens[i-1].toLowerCase() : '';
+          const nextTok = i < tokens.length - 1 ? tokens[i+1].toLowerCase() : '';
+          
+          if ((prevTok === 'hello' || prevTok === 'hi') && (nextTok === 'everyone' || nextTok === 'there' || nextTok === 'guys')) {
+            lineTokens.push({ text: tok, type: 'punct' });
+          } else {
+            lineTokens.push({ text: tok, type: 'punct' });
+            lineTokens.push({ text: '↗', type: 'up' });
+            lineTokens.push({ text: '‖', type: 'pause' });
+            wordCount = 0;
+          }
         } else if ('.!?'.includes(tok)) {
           lineTokens.push({ text: tok, type: 'punct' });
           lineTokens.push({ text: isQuestion ? '↗' : '↘', type: isQuestion ? 'up' : 'down' });
@@ -321,7 +330,7 @@ function generateModeling(script) {
         const isContent = CONTENT_WORDS.has(lower);
         lineTokens.push({ text: tok, type: isContent ? 'stress' : 'word' });
 
-        if (wordCount > 3 && (SUBORDINATORS.has(lower) || COORDINATORS.has(lower))) {
+        if (wordCount > 4 && (SUBORDINATORS.has(lower) || COORDINATORS.has(lower))) {
           lineTokens.push({ text: '↗', type: 'up' });
           lineTokens.push({ text: '‖', type: 'pause' });
           wordCount = 1;
@@ -533,7 +542,7 @@ function buildWave(){
 function toggleManual(){document.getElementById('manualArea').classList.toggle('hidden');}
 function getTranscript(){return document.getElementById('manualTranscript').value.trim()||currentTranscript.trim();}
 
-// 🎯 진단/에러 로깅이 강화된 analyze 함수
+// 🎯 문맥 반영 및 에러 진단 기능이 탑재된 analyze 함수
 async function analyze(){
   const studentId = document.getElementById('studentId').value.trim();
   const studentName = document.getElementById('studentName').value.trim();
@@ -551,7 +560,6 @@ async function analyze(){
 
   const r = analyzeRuleBased(t, script, recSeconds);
   saveAttempt(r);
-  showResult(r);
 
   const payload = {
     studentId: studentId,
@@ -572,13 +580,22 @@ async function analyze(){
     const resData = await response.json();
 
     if (resData.result === "success") {
+      // AI가 교정한 문맥 반영 스크립트가 있다면 교체
+      if (resData.correctedScript) {
+        window._rawUserScript = resData.correctedScript;
+      }
+      
+      showResult(r);
+
       document.getElementById('aiFeedbackContent').textContent = resData.feedback;
       document.getElementById('aiFeedbackArea').classList.remove('hidden');
     } else {
-      document.getElementById('aiFeedbackContent').textContent = "⚠️ [서버 피드백 생성 실패]:\n" + (resData.message || resData.feedback || "응답 데이터를 읽을 수 없습니다.");
+      showResult(r);
+      document.getElementById('aiFeedbackContent').textContent = "⚠️ [서버 응답 오류]:\n" + (resData.message || resData.feedback || "응답 데이터를 읽을 수 없습니다.");
       document.getElementById('aiFeedbackArea').classList.remove('hidden');
     }
   } catch (error) {
+    showResult(r);
     document.getElementById('aiFeedbackContent').textContent = "⚠️ [통신 에러]:\n" + error.toString();
     document.getElementById('aiFeedbackArea').classList.remove('hidden');
   } finally {
