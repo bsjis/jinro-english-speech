@@ -6,9 +6,9 @@
 <title>🎤 진로 영어 스피치 수행평가 연습 & AI 코칭</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Malgun Gothic','Apple SD Gothic Neo',system-ui,sans-serif;background:#F8FAFC;color:#1E293B;min-height:100vh}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#F8FAFC;color:#1E293B;min-height:100vh}
 .header{background:#4F46E5;color:#fff;padding:15px 18px 12px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
-.header h1{font-size:15px;font-weight:700}
+.header h1{font-size:16px;font-weight:700}
 .header .sub{font-size:11px;opacity:0.8;margin-top:2px}
 .streak{background:rgba(255,255,255,0.2);border-radius:20px;padding:4px 12px;font-size:12px;font-weight:500}
 .tabs{display:flex;background:#fff;border-bottom:1px solid #E2E8F0;position:sticky;top:56px;z-index:99}
@@ -16,21 +16,21 @@ body{font-family:'Malgun Gothic','Apple SD Gothic Neo',system-ui,sans-serif;back
 .tab.active{color:#4F46E5;border-bottom-color:#4F46E5}
 .content{padding:14px;display:none}.content.active{display:block}
 .card{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:16px;margin-bottom:12px}
-.lbl{font-size:12px;font-weight:500;color:#64748B;margin-bottom:7px}
-.section-title{font-size:13px;font-weight:700;color:#1E293B;margin-bottom:10px}
-textarea,input[type=number],input[type=text]{border:1px solid #E2E8F0;border-radius:8px;padding:9px 11px;font-family:inherit;font-size:13px;outline:none;color:#1E293B;background:#F8FAFC;transition:border .2s}
-textarea{resize:vertical;min-height:75px;width:100%}
-textarea:focus,input:focus{border-color:#4F46E5}
+.lbl{font-size:12px;font-weight:600;color:#475569;margin-bottom:7px}
+.section-title{font-size:14px;font-weight:700;color:#1E293B;margin-bottom:10px}
+textarea,input[type=number],input[type=text]{border:1px solid #CBD5E1;border-radius:8px;padding:10px 12px;font-family:inherit;font-size:14px;outline:none;color:#1E293B;background:#fff;transition:border .2s;line-height:1.5}
+textarea{resize:vertical;min-height:90px;width:100%}
+textarea:focus,input:focus{border-color:#4F46E5;box-shadow:0 0 0 3px rgba(79,70,229,0.1)}
 input[type=number]{width:65px;text-align:center}
 input[type=text]{width:100%}
-.btn{border:none;border-radius:8px;padding:9px 16px;font-family:inherit;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
+.btn{border:none;border-radius:8px;padding:10px 18px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;display:inline-flex;align-items:center;gap:6px}
 .btn-pri{background:#4F46E5;color:#fff}.btn-pri:hover{background:#3730A3}
 .btn-pri:disabled{background:#94A3B8;cursor:not-allowed}
 .btn-out{background:#fff;color:#4F46E5;border:1.5px solid #4F46E5}.btn-out:hover{background:#EEF2FF}
 .btn-red{background:#EF4444;color:#fff;border:none}
-.btn-sm{padding:5px 11px;font-size:12px}
+.btn-sm{padding:6px 12px;font-size:12px}
 .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
-.record-area{border:2px dashed #E2E8F0;border-radius:12px;padding:20px;text-align:center;transition:all .2s;margin-bottom:9px}
+.record-area{border:2px dashed #CBD5E1;border-radius:12px;padding:20px;text-align:center;transition:all .2s;margin-bottom:9px;background:#F8FAFC}
 .record-area.rec-on{border-color:#EF4444;background:#FEF2F2}
 .wave{display:flex;align-items:center;justify-content:center;gap:3px;height:36px}
 .wave-bar{width:3px;background:#EF4444;border-radius:2px}
@@ -68,17 +68,17 @@ input[type=text]{width:100%}
 .notice{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:10px 13px;font-size:12px;color:#166534;line-height:1.7;margin-bottom:12px}
 .diff-del{background:#FEE2E2;color:#991B1B;border-radius:3px;padding:1px 3px;text-decoration:line-through;font-size:12px}
 
-/* 모델링 스크립트 전용 클래스 */
-.modeling-wrap{background:#FAFAF5;border:1.5px solid #D6D4A0;border-radius:12px;padding:18px 20px;font-size:15px}
-.m-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0;border-bottom:1px dashed #E8E6B0;line-height:2.0}
-.m-line:last-child{border-bottom:none;padding-bottom:0}
-.mw{font-size:15px;color:#334155}
-.ms{display:inline-block;background:#FEF3C7;color:#92400E;font-weight:800;font-size:16px;border-radius:6px;padding:2px 8px;border-bottom:3px solid #F59E0B;box-shadow:0 1px 3px rgba(245,158,11,0.18)}
-.mu{display:inline-flex;align-items:center;gap:2px;color:#1D4ED8;font-weight:700;font-size:12px;background:#DBEAFE;border-radius:12px;padding:2px 6px;border:1px solid #93C5FD}
-.md{display:inline-flex;align-items:center;gap:2px;color:#6D28D9;font-weight:700;font-size:12px;background:#EDE9FE;border-radius:12px;padding:2px 6px;border:1px solid #C4B5FD}
-.mpause{display:inline-flex;align-items:center;justify-content:center;color:#DC2626;font-size:16px;font-weight:800;margin:0 4px;background:#FEE2E2;border-radius:4px;padding:0 5px}
-.modeling-legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;padding:8px 12px;background:#fff;border:1px solid #E2E8F0;border-radius:8px;font-size:11px;color:#64748B}
-.modeling-legend .li{display:flex;align-items:center;gap:5px}
+/* 🎯 정갈하고 깔끔한 모델링 스크립트 전용 디자인 */
+.modeling-wrap{background:#FFFFFF;border:1.5px solid #E2E8F0;border-radius:12px;padding:20px;font-size:16px;line-height:2.2;color:#0F172A}
+.m-line{margin-bottom:12px;padding-bottom:8px;border-bottom:1px dashed #F1F5F9}
+.m-line:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.mw{font-weight:400;color:#1E293B}
+.ms{font-weight:700;color:#0F172A;background:#FEF08A;padding:2px 4px;border-radius:4px;border-bottom:2px solid #EAB308} /* 강세: 노란 밑줄 */
+.mu{display:inline-flex;align-items:center;color:#2563EB;font-weight:700;font-size:13px;background:#EFF6FF;border-radius:6px;padding:1px 5px;margin:0 2px;border:1px solid #BFDBFE} /* 올림 억양 */
+.md{display:inline-flex;align-items:center;color:#7C3AED;font-weight:700;font-size:13px;background:#F5F3FF;border-radius:6px;padding:1px 5px;margin:0 2px;border:1px solid #DDD6FE} /* 내림 억양 */
+.mpause{color:#DC2626;font-size:15px;font-weight:800;margin:0 6px;background:#FEF2F2;border-radius:4px;padding:1px 6px;border:1px solid #FCA5A5} /* 끊어읽기 포즈 */
+.modeling-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;padding:10px 14px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;font-size:12px;color:#475569}
+.modeling-legend .li{display:flex;align-items:center;gap:6px}
 
 .stress-card{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;align-items:center;gap:8px}
 .stress-syllables{display:flex;gap:3px;align-items:flex-end}
@@ -111,7 +111,7 @@ input[type=text]{width:100%}
 
 <!-- 연습하기 -->
 <div id="tab-practice" class="content active">
-  <div class="notice">✅ <strong>Gemini AI 스피치 코치 연동 버전!</strong><br>학번과 이름을 입력하고 녹음 후 분석하면, 선생님 구글 시트에 자동 기록되며 Gemini AI의 맞춤 코칭을 받아보실 수 있습니다.</div>
+  <div class="notice">✅ <strong>Gemini AI 스피치 코치 연동 완료!</strong><br>학번과 이름을 입력하고 녹음 후 분석하면, 선생님 구글 시트에 자동 기록되며 Gemini AI의 맞춤 코칭을 받아보실 수 있습니다.</div>
   
   <div class="card">
     <div class="section-title">👤 학생 정보 입력 <span style="color:#EF4444">*필수</span></div>
@@ -132,7 +132,7 @@ input[type=text]{width:100%}
       <div style="flex:1;min-width:180px">
         <div class="lbl">📝 발표 스크립트 (선생님이 주신 원고) <span style="color:#EF4444">*필수</span></div>
         <textarea id="scriptInput" placeholder="여기에 발표할 영어 원고를 붙여넣으세요...
-예) Hello everyone. My name is Jimin and today I will talk about my favorite season..."></textarea>
+예) Hello everyone. I'm your English teacher Jimin."></textarea>
       </div>
       <div>
         <div class="lbl">🎯 합격 기준 점수</div>
@@ -228,9 +228,9 @@ input[type=text]{width:100%}
   <div class="card">
     <div class="section-title">💡 연습 팁</div>
     <ul class="tip-list">
-      <li><span>💡</span><span>모델링 스크립트의 노란 단어를 크고 길게, 파란 ↗는 올리고, 보라 ↘는 내려서 읽으세요.</span></li>
+      <li><span>💡</span><span>노란색 밑줄 단어를 크고 명확하게 발음하세요.</span></li>
       <li><span>💡</span><span>단어 강세 카드의 🔊 버튼으로 원어민 발음을 듣고 따라해 보세요.</span></li>
-      <li><span>💡</span><span>붉은 [‖] 포즈 마커에서 잠깐 호흡하고 이어서 말하세요.</span></li>
+      <li><span>💡</span><span>붉은 [‖] 포즈 마커에서 잠깐 숨을 고르고 이어서 말하세요.</span></li>
       <li><span>💡</span><span>um, uh 같은 간투사 없이 말하는 연습을 하세요.</span></li>
     </ul>
   </div>
@@ -280,16 +280,18 @@ const CONTENT_WORDS=new Set([
   'flower','flowers','tree','sky','season','favorite','best','worst','time','day',
   'year','world','life','people','friend','family','school','home','name','talk',
   'tell','show','today','everyone','absolutely','bloom','pleasant','agree','weather',
-  'becomes','speak','present','important','interesting','different','special','wonderful'
+  'teacher','english','student','speech','career','job','dream'
 ]);
 const SUBORDINATORS=new Set(['because','although','though','while','since','when','if','unless','whereas','after','before','until']);
 const COORDINATORS=new Set(['and','but','or','so','yet','for','nor']);
 
 // ══════════════════════════════════════════════════════════
-// 1. 문장 내부 직접 연결형 모델링 생성기
+// 🎯 100% 원본 텍스트 유지형 모델링 스크립트 생성기
 // ══════════════════════════════════════════════════════════
 function generateModeling(script) {
-  if (!script) return '';
+  if (!script || !script.trim()) return '';
+
+  window._rawUserScript = script.trim(); // 원본 스크립트 보존
 
   const rawSentences = script.trim().match(/[^.!?]+[.!?]+/g) || [script.trim()];
   const formattedLines = [];
@@ -297,8 +299,8 @@ function generateModeling(script) {
   rawSentences.forEach(sent => {
     const isQuestion = sent.trim().endsWith('?');
     const tokens = sent.trim().match(/[a-zA-Z']+|[.,!?;:]/g) || [];
-    let lineResult = [];
-    let wordCountInChunk = 0;
+    let lineTokens = [];
+    let wordCount = 0;
 
     for (let i = 0; i < tokens.length; i++) {
       const tok = tokens[i];
@@ -307,60 +309,53 @@ function generateModeling(script) {
 
       if (isPunct) {
         if (tok === ',') {
-          lineResult.push('↗ ‖');
-          wordCountInChunk = 0;
+          lineTokens.push({ text: tok, type: 'punct' });
+          lineTokens.push({ text: '↗', type: 'up' });
+          lineTokens.push({ text: '‖', type: 'pause' });
+          wordCount = 0;
         } else if ('.!?'.includes(tok)) {
-          lineResult.push(isQuestion ? '↗' : '↘');
-        } else if (tok === ';') {
-          lineResult.push('↘ ‖');
-          wordCountInChunk = 0;
+          lineTokens.push({ text: tok, type: 'punct' });
+          lineTokens.push({ text: isQuestion ? '↗' : '↘', type: isQuestion ? 'up' : 'down' });
+        } else {
+          lineTokens.push({ text: tok, type: 'punct' });
         }
       } else {
-        wordCountInChunk++;
-        let wordToAdd = tok;
-        if (CONTENT_WORDS.has(lower)) {
-          wordToAdd = tok.toUpperCase();
-        }
+        wordCount++;
+        const isContent = CONTENT_WORDS.has(lower);
+        lineTokens.push({ text: tok, type: isContent ? 'stress' : 'word' });
 
-        if (wordCountInChunk > 3 && (SUBORDINATORS.has(lower) || COORDINATORS.has(lower))) {
-          lineResult.push('↗ ‖');
-          wordCountInChunk = 1;
+        if (wordCount > 3 && (SUBORDINATORS.has(lower) || COORDINATORS.has(lower))) {
+          lineTokens.push({ text: '↗', type: 'up' });
+          lineTokens.push({ text: '‖', type: 'pause' });
+          wordCount = 1;
         }
-
-        lineResult.push(wordToAdd);
       }
     }
 
-    formattedLines.push(lineResult.join(' '));
+    formattedLines.push(lineTokens);
   });
 
-  return formattedLines.join('\n');
+  return formattedLines;
 }
 
 // ══════════════════════════════════════════════════════════
-// 2. 문장 내부 요소 시각화 렌더러
+// 🎯 글자체 및 가독성 최적화 렌더러
 // ══════════════════════════════════════════════════════════
-const SVG_UP=`<svg width="11" height="11" viewBox="0 0 20 20" fill="none" style="display:inline-block;vertical-align:middle"><path d="M4 15 L15 5 M15 5 H8 M15 5 V12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-const SVG_DOWN=`<svg width="11" height="11" viewBox="0 0 20 20" fill="none" style="display:inline-block;vertical-align:middle"><path d="M5 5 L15 15 M15 15 H8 M15 15 V8" stroke="#6D28D9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+function renderModelingScript(structuredLines) {
+  if (!structuredLines || structuredLines.length === 0) {
+    return '<div style="color:#94A3B8;font-size:13px;padding:10px">스크립트를 입력해 주세요.</div>';
+  }
 
-function renderModelingScript(text) {
-  if (!text) return '<div style="color:#94A3B8;font-size:13px;padding:10px">스크립트를 입력해 주세요.</div>';
+  const htmlLines = structuredLines.map(line => {
+    const rendered = line.map(item => {
+      if (item.type === 'up') return `<span class="mu">↗</span>`;
+      if (item.type === 'down') return `<span class="md">↘</span>`;
+      if (item.type === 'pause') return `<span class="mpause">‖</span>`;
+      if (item.type === 'stress') return `<span class="ms">${item.text}</span>`;
+      return `<span class="mw">${item.text}</span>`;
+    }).join(' ');
 
-  const lines = text.split('\n').filter(l => l.trim());
-  const htmlLines = lines.map(line => {
-    const tokens = line.split(/\s+/);
-    const renderedTokens = tokens.map(tok => {
-      if (tok === '↗') return `<span class="mu">${SVG_UP} ↗</span>`;
-      if (tok === '↘') return `<span class="md">${SVG_DOWN} ↘</span>`;
-      if (tok === '‖') return `<span class="mpause" title="잠깐 쉬어가기">‖</span>`;
-      
-      if (/^[A-Z]{2,}$/.test(tok)) {
-        return `<span class="ms">${tok}</span>`;
-      }
-      return `<span class="mw">${tok}</span>`;
-    });
-
-    return `<div class="m-line">${renderedTokens.join(' ')}</div>`;
+    return `<div class="m-line">${rendered}</div>`;
   }).join('');
 
   return `<div class="modeling-wrap">${htmlLines}</div>`;
@@ -460,6 +455,8 @@ function analyzeRuleBased(transcript,script,recSeconds){
   const spoken=new Set(words.map(w=>w.replace(/[^a-z]/g,'')));
   scriptWords.slice(0,50).forEach(w=>diff.push({word:w,ok:spoken.has(w.replace(/[^a-z]/g,''))}));
 
+  const structuredModeling = generateModeling(script);
+
   return{
     overallScore:overall,
     segmental:{score:segScore,problemSounds:foundSounds.slice(0,4),wordLevelIssues:wordIssues.slice(0,5)},
@@ -482,7 +479,7 @@ function analyzeRuleBased(transcript,script,recSeconds){
            overall>=65?'잘 하고 있어요! 청중에게 이야기하듯이 말해보세요.':
            '걱정하지 마세요! 반복 연습이 답이에요. 오늘 3번만 더 읽어보세요 💪',
       specificTips:tips.slice(0,3),
-      modelingScript:generateModeling(script)||'HELLO EVERYONE ↗\nMy NAME is Jimin ↘\nand TODAY I will TALK about my FAVORITE season ↘'
+      structuredModeling: structuredModeling
     },
     passThreshold:{required:passScore,achieved:overall>=passScore},
     diff,accuracy:Math.round(accuracy*100)
@@ -691,45 +688,43 @@ function showResult(r){
     <div style="font-size:12px;color:#64748B">⏸ ${flu.pausePatterns}</div>
   </div>
   <div class="card">
-    <div class="section-title">🎓 코치 조언 & 모델링 스크립트</div>
+    <div class="section-title">🎓 코치 조언 & 원어민 모델링 스크립트</div>
     <div style="font-size:13px;line-height:1.7;background:#F8FAFC;border-radius:8px;padding:11px;border-left:3px solid #4F46E5;color:#1E293B;margin-bottom:12px">${coach.mood}</div>
     <div class="lbl">✅ 구체적인 연습 방법</div>
     <ul class="tip-list" style="margin-bottom:16px">
       ${coach.specificTips.map(t=>`<li><span>💡</span><span>${t}</span></li>`).join('')}
     </ul>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:7px">
-      <div class="lbl" style="margin:0;font-size:13px;font-weight:700;color:#1E293B">🎯 모델링 스크립트</div>
-      <button class="btn btn-out btn-sm" onclick="speakModeling()">🔊 전체 고품질 듣기</button>
+      <div class="lbl" style="margin:0;font-size:13px;font-weight:700;color:#1E293B">🎯 원어민 모델링 스크립트</div>
+      <button class="btn btn-out btn-sm" onclick="speakModeling()">🔊 원어민 낭독 듣기</button>
     </div>
     <div class="modeling-legend">
-      <div class="li"><span class="ms" style="font-size:11px;padding:1px 7px">WORD</span><span>강세 강조</span></div>
-      <div class="li"><span class="mu" style="font-size:11px;padding:2px 6px">${SVG_UP} ↗</span><span>올라가는 억양</span></div>
-      <div class="li"><span class="md" style="font-size:11px;padding:2px 6px">${SVG_DOWN} ↘</span><span>내려가는 억양</span></div>
-      <div class="li"><span class="mpause">‖</span><span>포즈 (잠깐 쉬기)</span></div>
+      <div class="li"><span class="ms" style="font-size:12px;padding:1px 5px">Word</span><span>강세 강조</span></div>
+      <div class="li"><span class="mu">↗</span><span>올라가는 억양</span></div>
+      <div class="li"><span class="md">↘</span><span>내려가는 억양</span></div>
+      <div class="li"><span class="mpause">‖</span><span>끊어 읽기(Pause)</span></div>
     </div>
-    ${renderModelingScript(coach.modelingScript)}
+    ${renderModelingScript(coach.structuredModeling)}
     <div style="margin-top:10px;background:#EEF2FF;border-radius:8px;padding:9px 13px;font-size:12px;color:#3730A3;line-height:1.8">
-      💡 <strong>연습법:</strong> 노란 단어는 크고 길게 · 파란 ↗ 올리기 · 보라 ↘ 내리기 · 붉은 ‖ 에서 잠깐 숨고르기
+      💡 <strong>연습법:</strong> 노란 밑줄 단어 강조 · ↗ 목소리 살짝 올리기 · ↘ 목소리 가다듬기 · 붉은 ‖ 에서 호흡 가다듬기
     </div>
   </div>`;
 
   const div=document.getElementById('resultDiv');
   div.innerHTML=html;div.classList.remove('hidden');
-  window._modelingText=coach.modelingScript;
   updateStreak();
 }
 
 // ══════════════════════════════════════════════════════════
-// 3. 고품질 자연스러운 음성(TTS) 전체 듣기 개선 함수
+// 🎯 고품질 원어민 음성(TTS) 읽기 전용 함수
 // ══════════════════════════════════════════════════════════
 function speakModeling(){
-  if(!window._modelingText) return;
+  if(!window._rawUserScript) return;
   if(!('speechSynthesis' in window)){alert('이 브라우저는 음성 합성을 지원하지 않아요.');return;}
 
   window.speechSynthesis.cancel();
 
-  const cleanText = window._modelingText.replace(/[↗↘‖|]/g, '').replace(/\s+/g, ' ');
-  const utterance = new SpeechSynthesisUtterance(cleanText);
+  const utterance = new SpeechSynthesisUtterance(window._rawUserScript);
 
   const voices = window.speechSynthesis.getVoices();
   const naturalVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha')));
@@ -739,7 +734,7 @@ function speakModeling(){
   }
 
   utterance.lang = 'en-US';
-  utterance.rate = 0.8;
+  utterance.rate = 0.8; // 학생들이 따라하기 좋은 차분한 원어민 속도
   utterance.pitch = 1.0;
 
   window.speechSynthesis.speak(utterance);
