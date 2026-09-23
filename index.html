@@ -237,7 +237,7 @@ input[type=text]{width:100%}
 </div>
 
 <script>
-// 🔗 Apps Script 웹 앱 URL
+// 🔗 새로 발급받으신 Apps Script 웹 앱 URL 적용
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbynwYQdgBNhbFzgqyT0Np6ylsb6gHNXpRdxgxigXWG3MjVHo-evhWrWmeSYbdynmOiIZg/exec";
 
 const SOUND_RULES=[
@@ -533,6 +533,7 @@ function buildWave(){
 function toggleManual(){document.getElementById('manualArea').classList.toggle('hidden');}
 function getTranscript(){return document.getElementById('manualTranscript').value.trim()||currentTranscript.trim();}
 
+// 🎯 진단/에러 로깅이 강화된 analyze 함수
 async function analyze(){
   const studentId = document.getElementById('studentId').value.trim();
   const studentName = document.getElementById('studentName').value.trim();
@@ -552,12 +553,11 @@ async function analyze(){
   saveAttempt(r);
   showResult(r);
 
-  // 🎯 Apps Script로 보낼 데이터 명확히 보정
   const payload = {
     studentId: studentId,
     name: studentName,
-    script: script,         // [원어민 기준 원고]
-    studentSpeech: t,       // [학생 실제 발화 STT 텍스트]
+    script: script,
+    studentSpeech: t,
     wpm: r.suprasegmental.pace.wpm || 0,
     accuracy: r.accuracy || 0
   };
@@ -575,10 +575,12 @@ async function analyze(){
       document.getElementById('aiFeedbackContent').textContent = resData.feedback;
       document.getElementById('aiFeedbackArea').classList.remove('hidden');
     } else {
-      console.error("Server Error:", resData.message);
+      document.getElementById('aiFeedbackContent').textContent = "⚠️ [서버 피드백 생성 실패]:\n" + (resData.message || resData.feedback || "응답 데이터를 읽을 수 없습니다.");
+      document.getElementById('aiFeedbackArea').classList.remove('hidden');
     }
   } catch (error) {
-    console.error("Network Error:", error);
+    document.getElementById('aiFeedbackContent').textContent = "⚠️ [통신 에러]:\n" + error.toString();
+    document.getElementById('aiFeedbackArea').classList.remove('hidden');
   } finally {
     document.getElementById('loadingDiv').classList.add('hidden');
     document.getElementById('analyzeBtn').disabled = false;
