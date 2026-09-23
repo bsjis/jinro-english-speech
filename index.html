@@ -68,21 +68,18 @@ input[type=text]{width:100%}
 .notice{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:10px 13px;font-size:12px;color:#166534;line-height:1.7;margin-bottom:12px}
 .diff-del{background:#FEE2E2;color:#991B1B;border-radius:3px;padding:1px 3px;text-decoration:line-through;font-size:12px}
 
-/* 모델링 스크립트 */
+/* 모델링 스크립트 전용 클래스 */
 .modeling-wrap{background:#FAFAF5;border:1.5px solid #D6D4A0;border-radius:12px;padding:18px 20px;font-size:15px}
-.m-line{display:flex;flex-wrap:wrap;align-items:center;gap:5px;padding:8px 0;border-bottom:1px dashed #E8E6B0;line-height:1.6}
+.m-line{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 0;border-bottom:1px dashed #E8E6B0;line-height:2.0}
 .m-line:last-child{border-bottom:none;padding-bottom:0}
-.m-line:first-child{padding-top:0}
 .mw{font-size:15px;color:#334155}
-.ms{display:inline-block;background:#FEF3C7;color:#92400E;font-weight:800;font-size:16px;border-radius:6px;padding:2px 8px;border-bottom:3px solid #F59E0B;box-shadow:0 1px 3px rgba(245,158,11,0.18);line-height:1.4}
-.mp{font-size:15px;color:#94A3B8;margin-left:-3px}
-.mu{display:inline-flex;align-items:center;gap:3px;color:#1D4ED8;font-weight:700;font-size:13px;background:#DBEAFE;border-radius:20px;padding:3px 10px;border:1px solid #93C5FD;white-space:nowrap}
-.md{display:inline-flex;align-items:center;gap:3px;color:#6D28D9;font-weight:700;font-size:13px;background:#EDE9FE;border-radius:20px;padding:3px 10px;border:1px solid #C4B5FD;white-space:nowrap}
-.mpause{display:inline-flex;align-items:center;justify-content:center;color:#94A3B8;font-size:18px;font-weight:300;margin:0 2px;line-height:1}
+.ms{display:inline-block;background:#FEF3C7;color:#92400E;font-weight:800;font-size:16px;border-radius:6px;padding:2px 8px;border-bottom:3px solid #F59E0B;box-shadow:0 1px 3px rgba(245,158,11,0.18)}
+.mu{display:inline-flex;align-items:center;gap:2px;color:#1D4ED8;font-weight:700;font-size:12px;background:#DBEAFE;border-radius:12px;padding:2px 6px;border:1px solid #93C5FD}
+.md{display:inline-flex;align-items:center;gap:2px;color:#6D28D9;font-weight:700;font-size:12px;background:#EDE9FE;border-radius:12px;padding:2px 6px;border:1px solid #C4B5FD}
+.mpause{display:inline-flex;align-items:center;justify-content:center;color:#DC2626;font-size:16px;font-weight:800;margin:0 4px;background:#FEE2E2;border-radius:4px;padding:0 5px}
 .modeling-legend{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;padding:8px 12px;background:#fff;border:1px solid #E2E8F0;border-radius:8px;font-size:11px;color:#64748B}
 .modeling-legend .li{display:flex;align-items:center;gap:5px}
 
-/* 단어 강세 카드 */
 .stress-card{background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;align-items:center;gap:8px}
 .stress-syllables{display:flex;gap:3px;align-items:flex-end}
 .syl-box{display:flex;flex-direction:column;align-items:center;gap:3px}
@@ -116,7 +113,6 @@ input[type=text]{width:100%}
 <div id="tab-practice" class="content active">
   <div class="notice">✅ <strong>Gemini AI 스피치 코치 연동 버전!</strong><br>학번과 이름을 입력하고 녹음 후 분석하면, 선생님 구글 시트에 자동 기록되며 Gemini AI의 맞춤 코칭을 받아보실 수 있습니다.</div>
   
-  <!-- 학생 정보 입력 카드 -->
   <div class="card">
     <div class="section-title">👤 학생 정보 입력 <span style="color:#EF4444">*필수</span></div>
     <div style="display:flex;gap:12px;flex-wrap:wrap">
@@ -182,7 +178,6 @@ input[type=text]{width:100%}
     </div>
   </div>
 
-  <!-- AI 맞춤 피드백 출력 영역 -->
   <div id="aiFeedbackArea" class="card hidden" style="border-left: 5px solid #4F46E5; background:#EEF2FF;">
     <div class="section-title" style="color:#4F46E5;">🎙️ Gemini AI 스피치 1:1 맞춤 코칭</div>
     <div id="aiFeedbackContent" style="font-size:14px; line-height:1.7; white-space: pre-wrap; color:#1E293B;"></div>
@@ -235,7 +230,7 @@ input[type=text]{width:100%}
     <ul class="tip-list">
       <li><span>💡</span><span>모델링 스크립트의 노란 단어를 크고 길게, 파란 ↗는 올리고, 보라 ↘는 내려서 읽으세요.</span></li>
       <li><span>💡</span><span>단어 강세 카드의 🔊 버튼으로 원어민 발음을 듣고 따라해 보세요.</span></li>
-      <li><span>💡</span><span>| 포즈 마커에서 잠깐 호흡하고 이어서 말하세요.</span></li>
+      <li><span>💡</span><span>붉은 [‖] 포즈 마커에서 잠깐 호흡하고 이어서 말하세요.</span></li>
       <li><span>💡</span><span>um, uh 같은 간투사 없이 말하는 연습을 하세요.</span></li>
     </ul>
   </div>
@@ -245,9 +240,6 @@ input[type=text]{width:100%}
 // 🔗 발급받으신 Apps Script 웹 앱 URL을 아래 큰따옴표 안에 넣어주세요!
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxRC_jVL_FJIO_oNnTi1MxoEtNQXjj-HoMF-eai08QTncocx6KBVMgqtrYH2IXak26xew/exec";
 
-// ══════════════════════════════════════════════════════════
-// 상수 & 데이터
-// ══════════════════════════════════════════════════════════
 const SOUND_RULES=[
   {sound:'/θ/ /ð/',regex:/\b(the|this|that|these|those|there|their|they|think|thought|thank|three|through|throw|thin|thick|thing|things|both|with|math|mouth|teeth|truth|youth|breath)\b/gi,
    tip:'혀끝을 윗니 사이에 살짝 넣고 바람을 불어내세요.',korean:'ㅅ 또는 ㄷ으로 발음하는 경향이 있어요'},
@@ -288,122 +280,90 @@ const CONTENT_WORDS=new Set([
   'flower','flowers','tree','sky','season','favorite','best','worst','time','day',
   'year','world','life','people','friend','family','school','home','name','talk',
   'tell','show','today','everyone','absolutely','bloom','pleasant','agree','weather',
-  'becomes','speak','present','important','interesting','different','special','wonderful',
-  'love','favorite','beautiful','amazing','perfect','excellent','terrible',
+  'becomes','speak','present','important','interesting','different','special','wonderful'
 ]);
-const SUBORDINATORS=new Set(['because','although','though','while','since','when','if','unless','whereas','after','before','until','whereas']);
+const SUBORDINATORS=new Set(['because','although','though','while','since','when','if','unless','whereas','after','before','until']);
 const COORDINATORS=new Set(['and','but','or','so','yet','for','nor']);
 
-function generateModeling(script){
-  if(!script) return '';
-  const rawSentences=[];
-  let buf='';
-  for(const ch of script.trim()){
-    buf+=ch;
-    if('.!?'.includes(ch)){rawSentences.push(buf.trim());buf='';}
-  }
-  if(buf.trim()) rawSentences.push(buf.trim());
+// ══════════════════════════════════════════════════════════
+// 1. 문장 내부 직접 연결형 모델링 생성기
+// ══════════════════════════════════════════════════════════
+function generateModeling(script) {
+  if (!script) return '';
 
-  const lines=[];
-  rawSentences.slice(0,5).forEach(sent=>{
-    const isQuestion=sent.endsWith('?');
-    const tokens=sent.match(/[a-zA-Z']+|[.,!?;:]/g)||[];
-    let phraseTokens=[];
-    let isFirstInSent=true;
+  const rawSentences = script.trim().match(/[^.!?]+[.!?]+/g) || [script.trim()];
+  const formattedLines = [];
 
-    const flushPhrase=(arrow,pause=false)=>{
-      if(phraseTokens.length===0) return;
-      const marked=phraseTokens.map((t,i)=>{
-        if(/^[a-zA-Z']/.test(t)){
-          const lower=t.toLowerCase();
-          if(CONTENT_WORDS.has(lower)||(isFirstInSent&&i===0)){
-            isFirstInSent=false;
-            return t.charAt(0).toUpperCase()===t.charAt(0)&&t===t.toUpperCase()? t : lower.toUpperCase();
-          }
-          isFirstInSent=false;
-          return t;
+  rawSentences.forEach(sent => {
+    const isQuestion = sent.trim().endsWith('?');
+    const tokens = sent.trim().match(/[a-zA-Z']+|[.,!?;:]/g) || [];
+    let lineResult = [];
+    let wordCountInChunk = 0;
+
+    for (let i = 0; i < tokens.length; i++) {
+      const tok = tokens[i];
+      const lower = tok.toLowerCase();
+      const isPunct = /^[.,!?;:]$/.test(tok);
+
+      if (isPunct) {
+        if (tok === ',') {
+          lineResult.push('↗ ‖');
+          wordCountInChunk = 0;
+        } else if ('.!?'.includes(tok)) {
+          lineResult.push(isQuestion ? '↗' : '↘');
+        } else if (tok === ';') {
+          lineResult.push('↘ ‖');
+          wordCountInChunk = 0;
         }
-        return t;
-      });
-      lines.push(marked.join(' ')+(pause?' |':'')+' '+arrow);
-      phraseTokens=[];
-    };
-
-    for(let i=0;i<tokens.length;i++){
-      const tok=tokens[i];
-      const lower=tok.toLowerCase();
-      const isSub=SUBORDINATORS.has(lower);
-      const isCoord=COORDINATORS.has(lower);
-      const isPunct=/^[.,!?;:]$/.test(tok);
-
-      if(isPunct){
-        if(phraseTokens.length>0) phraseTokens[phraseTokens.length-1]+=tok;
-        if(tok===','){
-          flushPhrase('↗', false);
-        } else if('.!?'.includes(tok)){
-          flushPhrase(isQuestion?'↗':'↘', false);
-          isFirstInSent=true;
-        } else if(tok===';'){
-          flushPhrase('↗', true);
-        }
-      } else if(isSub){
-        if(phraseTokens.length>0) flushPhrase('↗', false);
-        phraseTokens.push(tok);
-      } else if(isCoord && phraseTokens.length>3){
-        flushPhrase('↘', true);
-        phraseTokens.push(tok);
       } else {
-        phraseTokens.push(tok);
+        wordCountInChunk++;
+        let wordToAdd = tok;
+        if (CONTENT_WORDS.has(lower)) {
+          wordToAdd = tok.toUpperCase();
+        }
+
+        if (wordCountInChunk > 3 && (SUBORDINATORS.has(lower) || COORDINATORS.has(lower))) {
+          lineResult.push('↗ ‖');
+          wordCountInChunk = 1;
+        }
+
+        lineResult.push(wordToAdd);
       }
     }
-    if(phraseTokens.length>0) flushPhrase(isQuestion?'↗':'↘');
+
+    formattedLines.push(lineResult.join(' '));
   });
 
-  return lines.join('\n');
+  return formattedLines.join('\n');
 }
 
-const SVG_UP=`<svg width="13" height="13" viewBox="0 0 20 20" fill="none" style="display:inline-block;vertical-align:middle"><path d="M4 15 L15 5 M15 5 H8 M15 5 V12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
-const SVG_DOWN=`<svg width="13" height="13" viewBox="0 0 20 20" fill="none" style="display:inline-block;vertical-align:middle"><path d="M5 5 L15 15 M15 15 H8 M15 15 V8" stroke="#6D28D9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+// ══════════════════════════════════════════════════════════
+// 2. 문장 내부 요소 시각화 렌더러
+// ══════════════════════════════════════════════════════════
+const SVG_UP=`<svg width="11" height="11" viewBox="0 0 20 20" fill="none" style="display:inline-block;vertical-align:middle"><path d="M4 15 L15 5 M15 5 H8 M15 5 V12" stroke="#1D4ED8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const SVG_DOWN=`<svg width="11" height="11" viewBox="0 0 20 20" fill="none" style="display:inline-block;vertical-align:middle"><path d="M5 5 L15 15 M15 15 H8 M15 15 V8" stroke="#6D28D9" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
-function renderModelingScript(text){
-  if(!text) return '<div style="color:#94A3B8;font-size:13px;padding:10px">모델링 스크립트를 생성할 수 없어요. 스크립트를 입력해 주세요.</div>';
-  const rawLines=text.split('\n').filter(l=>l.trim());
-  const linesHtml=rawLines.map(line=>{
-    const trimmed=line.trim();
-    const arrowMatch=trimmed.match(/(↗|↘)\s*$/);
-    const arrow=arrowMatch?arrowMatch[1]:null;
-    const phraseText=arrow?trimmed.slice(0,trimmed.lastIndexOf(arrow)).trim():trimmed;
-    const hasPause=phraseText.includes(' |');
-    const cleanPhrase=phraseText.replace(' |','').trim();
-    const wordTokens=cleanPhrase.match(/[A-Za-z']+[.,!?;:]*|[.,!?;:]+/g)||[];
+function renderModelingScript(text) {
+  if (!text) return '<div style="color:#94A3B8;font-size:13px;padding:10px">스크립트를 입력해 주세요.</div>';
 
-    let wordsHtml='';
-    wordTokens.forEach((tok,i)=>{
-      const trailPunct=tok.match(/[.,!?;:]+$/)?.[0]||'';
-      const wordPart=tok.replace(/[.,!?;:]+$/,'');
-      if(!wordPart && trailPunct){
-        wordsHtml+=`<span class="mp">${trailPunct}</span>`;
-        return;
+  const lines = text.split('\n').filter(l => l.trim());
+  const htmlLines = lines.map(line => {
+    const tokens = line.split(/\s+/);
+    const renderedTokens = tokens.map(tok => {
+      if (tok === '↗') return `<span class="mu">${SVG_UP} ↗</span>`;
+      if (tok === '↘') return `<span class="md">${SVG_DOWN} ↘</span>`;
+      if (tok === '‖') return `<span class="mpause" title="잠깐 쉬어가기">‖</span>`;
+      
+      if (/^[A-Z]{2,}$/.test(tok)) {
+        return `<span class="ms">${tok}</span>`;
       }
-      if(/^[A-Z]{2,}$/.test(wordPart)){
-        wordsHtml+=`<span class="ms">${wordPart}</span>`;
-      } else {
-        wordsHtml+=`<span class="mw">${wordPart}</span>`;
-      }
-      if(trailPunct) wordsHtml+=`<span class="mp">${trailPunct}</span>`;
-      const next=wordTokens[i+1];
-      if(next && !/^[.,!?;:]/.test(next)) wordsHtml+=' ';
+      return `<span class="mw">${tok}</span>`;
     });
 
-    const pauseHtml=hasPause?`<span class="mpause" title="여기서 잠깐 쉬세요">‖</span> `:'';
-    let arrowHtml='';
-    if(arrow==='↗') arrowHtml=`<span class="mu">${SVG_UP} ↗</span>`;
-    else if(arrow==='↘') arrowHtml=`<span class="md">${SVG_DOWN} ↘</span>`;
-
-    return `<div class="m-line">${wordsHtml.trim()} ${pauseHtml}${arrowHtml}</div>`;
+    return `<div class="m-line">${renderedTokens.join(' ')}</div>`;
   }).join('');
 
-  return `<div class="modeling-wrap">${linesHtml}</div>`;
+  return `<div class="modeling-wrap">${htmlLines}</div>`;
 }
 
 function renderStressCards(wordIssues){
@@ -495,7 +455,6 @@ function analyzeRuleBased(transcript,script,recSeconds){
   if(wpm>160)tips.push('너무 빠르게 말하고 있어요. 중요한 단어에서 잠깐 천천히 말해보세요.');
   if(accuracy<0.7)tips.push('원고를 더 정확하게 암기해보세요.');
   tips.push('내용어(명사, 동사, 형용사)는 크고 길게, 기능어(관사, 전치사)는 빠르게 말하세요.');
-  if(tips.length<3)tips.push('모델링 스크립트의 억양 화살표 방향을 따라 연습해 보세요.');
 
   const diff=[];
   const spoken=new Set(words.map(w=>w.replace(/[^a-z]/g,'')));
@@ -583,9 +542,6 @@ function buildWave(){
 function toggleManual(){document.getElementById('manualArea').classList.toggle('hidden');}
 function getTranscript(){return document.getElementById('manualTranscript').value.trim()||currentTranscript.trim();}
 
-// ══════════════════════════════════════════════════════════
-// 핵심: 발음 분석 및 백엔드(Apps Script / Gemini AI) 연동
-// ══════════════════════════════════════════════════════════
 async function analyze(){
   const studentId = document.getElementById('studentId').value.trim();
   const studentName = document.getElementById('studentName').value.trim();
@@ -601,12 +557,10 @@ async function analyze(){
   document.getElementById('aiFeedbackArea').classList.add('hidden');
   document.getElementById('analyzeBtn').disabled = true;
 
-  // 1. 기존 프론트엔드 분석 수행
   const r = analyzeRuleBased(t, script, recSeconds);
   saveAttempt(r);
   showResult(r);
 
-  // 2. Apps Script 백엔드로 데이터 전송 및 Gemini AI 피드백 수신
   const payload = {
     studentId: studentId,
     name: studentName,
@@ -745,17 +699,17 @@ function showResult(r){
     </ul>
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap;gap:7px">
       <div class="lbl" style="margin:0;font-size:13px;font-weight:700;color:#1E293B">🎯 모델링 스크립트</div>
-      <button class="btn btn-out btn-sm" onclick="speakModeling()">🔊 전체 듣기</button>
+      <button class="btn btn-out btn-sm" onclick="speakModeling()">🔊 전체 고품질 듣기</button>
     </div>
     <div class="modeling-legend">
       <div class="li"><span class="ms" style="font-size:11px;padding:1px 7px">WORD</span><span>강세 강조</span></div>
-      <div class="li"><span class="mu" style="font-size:11px;padding:2px 8px">${SVG_UP} ↗</span><span>올라가는 억양</span></div>
-      <div class="li"><span class="md" style="font-size:11px;padding:2px 8px">${SVG_DOWN} ↘</span><span>내려가는 억양</span></div>
+      <div class="li"><span class="mu" style="font-size:11px;padding:2px 6px">${SVG_UP} ↗</span><span>올라가는 억양</span></div>
+      <div class="li"><span class="md" style="font-size:11px;padding:2px 6px">${SVG_DOWN} ↘</span><span>내려가는 억양</span></div>
       <div class="li"><span class="mpause">‖</span><span>포즈 (잠깐 쉬기)</span></div>
     </div>
     ${renderModelingScript(coach.modelingScript)}
     <div style="margin-top:10px;background:#EEF2FF;border-radius:8px;padding:9px 13px;font-size:12px;color:#3730A3;line-height:1.8">
-      💡 <strong>연습법:</strong> 노란 단어는 크고 길게 · 파란 ↗ 목소리 올리기 · 보라 ↘ 목소리 내리기 · ‖ 에서 잠깐 쉬기
+      💡 <strong>연습법:</strong> 노란 단어는 크고 길게 · 파란 ↗ 올리기 · 보라 ↘ 내리기 · 붉은 ‖ 에서 잠깐 숨고르기
     </div>
   </div>`;
 
@@ -765,13 +719,30 @@ function showResult(r){
   updateStreak();
 }
 
+// ══════════════════════════════════════════════════════════
+// 3. 고품질 자연스러운 음성(TTS) 전체 듣기 개선 함수
+// ══════════════════════════════════════════════════════════
 function speakModeling(){
-  if(!window._modelingText)return;
-  if(!('speechSynthesis'in window)){alert('이 브라우저는 TTS를 지원하지 않아요.');return;}
+  if(!window._modelingText) return;
+  if(!('speechSynthesis' in window)){alert('이 브라우저는 음성 합성을 지원하지 않아요.');return;}
+
   window.speechSynthesis.cancel();
-  const clean=window._modelingText.replace(/[↗↘‖|]/g,'').replace(/\n/g,' ').replace(/\s+/g,' ');
-  const u=new SpeechSynthesisUtterance(clean);u.lang='en-US';u.rate=0.82;
-  window.speechSynthesis.speak(u);
+
+  const cleanText = window._modelingText.replace(/[↗↘‖|]/g, '').replace(/\s+/g, ' ');
+  const utterance = new SpeechSynthesisUtterance(cleanText);
+
+  const voices = window.speechSynthesis.getVoices();
+  const naturalVoice = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Samantha')));
+  
+  if (naturalVoice) {
+    utterance.voice = naturalVoice;
+  }
+
+  utterance.lang = 'en-US';
+  utterance.rate = 0.8;
+  utterance.pitch = 1.0;
+
+  window.speechSynthesis.speak(utterance);
 }
 
 function resetPractice(){
