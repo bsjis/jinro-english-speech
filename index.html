@@ -73,10 +73,10 @@ input[type=text]{width:100%}
 .m-line{margin-bottom:12px;padding-bottom:8px;border-bottom:1px dashed #F1F5F9}
 .m-line:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
 .mw{font-weight:400;color:#1E293B}
-.ms{font-weight:700;color:#0F172A;background:#FEF08A;padding:2px 4px;border-radius:4px;border-bottom:2px solid #EAB308} /* 강세: 노란 밑줄 */
-.mu{display:inline-flex;align-items:center;color:#2563EB;font-weight:700;font-size:13px;background:#EFF6FF;border-radius:6px;padding:1px 5px;margin:0 2px;border:1px solid #BFDBFE} /* 올림 억양 */
-.md{display:inline-flex;align-items:center;color:#7C3AED;font-weight:700;font-size:13px;background:#F5F3FF;border-radius:6px;padding:1px 5px;margin:0 2px;border:1px solid #DDD6FE} /* 내림 억양 */
-.mpause{color:#DC2626;font-size:15px;font-weight:800;margin:0 6px;background:#FEF2F2;border-radius:4px;padding:1px 6px;border:1px solid #FCA5A5} /* 끊어읽기 포즈 */
+.ms{font-weight:700;color:#0F172A;background:#FEF08A;padding:2px 4px;border-radius:4px;border-bottom:2px solid #EAB308}
+.mu{display:inline-flex;align-items:center;color:#2563EB;font-weight:700;font-size:13px;background:#EFF6FF;border-radius:6px;padding:1px 5px;margin:0 2px;border:1px solid #BFDBFE}
+.md{display:inline-flex;align-items:center;color:#7C3AED;font-weight:700;font-size:13px;background:#F5F3FF;border-radius:6px;padding:1px 5px;margin:0 2px;border:1px solid #DDD6FE}
+.mpause{color:#DC2626;font-size:15px;font-weight:800;margin:0 6px;background:#FEF2F2;border-radius:4px;padding:1px 6px;border:1px solid #FCA5A5}
 .modeling-legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;padding:10px 14px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:8px;font-size:12px;color:#475569}
 .modeling-legend .li{display:flex;align-items:center;gap:6px}
 
@@ -237,8 +237,8 @@ input[type=text]{width:100%}
 </div>
 
 <script>
-// 🔗 발급받으신 Apps Script 웹 앱 URL을 아래 큰따옴표 안에 넣어주세요!
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby4pFFMDyQugyf70Gr-QD_-vjMo4gv4cIojZtwuVzC83aLhQftgPtter6cR9jXWpekPoA/exec";
+// 🔗 Apps Script 웹 앱 URL
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzTlce3GaRGEKxhvuRajxw-m_UH4gS1w0rh2ANT23uTm5UrDawnTUdCNjjwqVF9EmdkHg/exec";
 
 const SOUND_RULES=[
   {sound:'/θ/ /ð/',regex:/\b(the|this|that|these|those|there|their|they|think|thought|thank|three|through|throw|thin|thick|thing|things|both|with|math|mouth|teeth|truth|youth|breath)\b/gi,
@@ -285,13 +285,10 @@ const CONTENT_WORDS=new Set([
 const SUBORDINATORS=new Set(['because','although','though','while','since','when','if','unless','whereas','after','before','until']);
 const COORDINATORS=new Set(['and','but','or','so','yet','for','nor']);
 
-// ══════════════════════════════════════════════════════════
-// 🎯 100% 원본 텍스트 유지형 모델링 스크립트 생성기
-// ══════════════════════════════════════════════════════════
 function generateModeling(script) {
   if (!script || !script.trim()) return '';
 
-  window._rawUserScript = script.trim(); // 원본 스크립트 보존
+  window._rawUserScript = script.trim();
 
   const rawSentences = script.trim().match(/[^.!?]+[.!?]+/g) || [script.trim()];
   const formattedLines = [];
@@ -338,9 +335,6 @@ function generateModeling(script) {
   return formattedLines;
 }
 
-// ══════════════════════════════════════════════════════════
-// 🎯 글자체 및 가독성 최적화 렌더러
-// ══════════════════════════════════════════════════════════
 function renderModelingScript(structuredLines) {
   if (!structuredLines || structuredLines.length === 0) {
     return '<div style="color:#94A3B8;font-size:13px;padding:10px">스크립트를 입력해 주세요.</div>';
@@ -558,11 +552,12 @@ async function analyze(){
   saveAttempt(r);
   showResult(r);
 
+  // 🎯 Apps Script로 보낼 데이터 명확히 보정
   const payload = {
     studentId: studentId,
     name: studentName,
-    script: script,
-    studentSpeech: t,
+    script: script,         // [원어민 기준 원고]
+    studentSpeech: t,       // [학생 실제 발화 STT 텍스트]
     wpm: r.suprasegmental.pace.wpm || 0,
     accuracy: r.accuracy || 0
   };
@@ -715,9 +710,6 @@ function showResult(r){
   updateStreak();
 }
 
-// ══════════════════════════════════════════════════════════
-// 🎯 고품질 원어민 음성(TTS) 읽기 전용 함수
-// ══════════════════════════════════════════════════════════
 function speakModeling(){
   if(!window._rawUserScript) return;
   if(!('speechSynthesis' in window)){alert('이 브라우저는 음성 합성을 지원하지 않아요.');return;}
@@ -734,7 +726,7 @@ function speakModeling(){
   }
 
   utterance.lang = 'en-US';
-  utterance.rate = 0.8; // 학생들이 따라하기 좋은 차분한 원어민 속도
+  utterance.rate = 0.8;
   utterance.pitch = 1.0;
 
   window.speechSynthesis.speak(utterance);
